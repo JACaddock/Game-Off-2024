@@ -21,5 +21,10 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	direction = Input.get_axis("ui_up", "ui_down")
+	if direction:
+		velocity.y = direction * SPEED
+	else:
+		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
