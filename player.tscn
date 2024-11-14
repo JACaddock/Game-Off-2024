@@ -7,7 +7,6 @@
 size = Vector2(108, 398)
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(696, 368)
 script = ExtResource("1_xt2gi")
 metadata/_edit_group_ = true
 
@@ -19,3 +18,5 @@ shape = SubResource("RectangleShape2D_680mh")
 position = Vector2(-2.38419e-07, 0)
 scale = Vector2(0.160156, 0.160156)
 texture = ExtResource("2_fto5l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
