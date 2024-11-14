@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cys6c84rhn8h5"]
+
+[ext_resource type="Script" path="res://entities/basic_enemy.gd" id="1_0om04"]
+[ext_resource type="Texture2D" uid="uid://dvhpiwjec1tv2" path="res://assets/sprites/char_34.png" id="1_knaso"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47qq8"]
+size = Vector2(71, 122)
+
+[node name="BasicEnemy" type="CharacterBody2D"]
+script = ExtResource("1_0om04")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("1_knaso")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 3)
+shape = SubResource("RectangleShape2D_47qq8")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(400, 0)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

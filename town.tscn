@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7yfmbtgiwteq"]
+[gd_scene load_steps=5 format=3 uid="uid://c7yfmbtgiwteq"]
 
 [ext_resource type="PackedScene" uid="uid://bwdica03o4q8w" path="res://player.tscn" id="1_br47w"]
 [ext_resource type="Texture2D" uid="uid://bt6js0oxig47u" path="res://Screenshot_20210309-002649.jpg" id="2_3qk0v"]
+[ext_resource type="PackedScene" uid="uid://cys6c84rhn8h5" path="res://entities/basic_enemy.tscn" id="3_5syfo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_py2se"]
 size = Vector2(656.766, 867.087)
@@ -9,16 +10,45 @@ size = Vector2(656.766, 867.087)
 [node name="Town" type="Node2D"]
 
 [node name="Detective" parent="." instance=ExtResource("1_br47w")]
-position = Vector2(747, 276)
+position = Vector2(1245, -332)
 
-[node name="Floor" type="Sprite2D" parent="."]
-position = Vector2(535, 848)
-scale = Vector2(2.60976, 0.469388)
+[node name="BasicEnemy" parent="." instance=ExtResource("3_5syfo")]
+position = Vector2(173, 372)
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Floor" type="Sprite2D" parent="Background"]
+position = Vector2(1388.5, 848)
+scale = Vector2(4.23323, 0.469388)
 texture = ExtResource("2_3qk0v")
 metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Background/Floor"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Floor/StaticBody2D"]
+position = Vector2(-0.383179, -7.45654)
+shape = SubResource("RectangleShape2D_py2se")
+
+[node name="LWall" type="Sprite2D" parent="Background"]
+position = Vector2(-191, 362)
+scale = Vector2(0.558689, 0.998866)
+texture = ExtResource("2_3qk0v")
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background/LWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/LWall/StaticBody2D"]
+position = Vector2(-0.383179, -7.45654)
+shape = SubResource("RectangleShape2D_py2se")
+
+[node name="RWall" type="Sprite2D" parent="Background"]
+position = Vector2(2700, 329)
+scale = Vector2(0.558689, 0.998866)
+texture = ExtResource("2_3qk0v")
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background/RWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/RWall/StaticBody2D"]
 position = Vector2(-0.383179, -7.45654)
 shape = SubResource("RectangleShape2D_py2se")
